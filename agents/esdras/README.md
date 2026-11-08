@@ -1,55 +1,60 @@
 # ESDRAS — Guardião Documental do S.A.L.E.M.
 
-**3 J R Agência Digital** · ASV de gestão documental, governança, classificação e rastreabilidade.
+**3 J R Agência Digital** · Assistente virtual especializado em gestão e governança do conhecimento corporativo.
+
+## Arquitetura oficial: workflow clássico por nós
+
+Em 08/11/2026, o ESDRAS foi **recriado como workflow tradicional do n8n**, para que seus componentes possam ser adicionados, configurados, substituídos e conectados pelo editor de nós. O rascunho anterior do **Agent Builder foi excluído**, conforme decisão do gestor.
+
+O ESDRAS atual utiliza, no canvas n8n:
+
+1. **Chat Trigger (interno):** entrada de solicitações.
+2. **AI Agent:** interpretação e roteamento de consultas.
+3. **OpenAI Chat Model:** modelo de linguagem conectado por credencial existente.
+4. **Simple Memory:** contexto limitado da conversa.
+5. **Google Drive Tool:** pesquisa de arquivos e pastas.
+6. **Google Sheets Tool:** consulta ao catálogo de entidades.
+7. **Google Sheets Tool:** consulta aos relacionamentos.
+8. **Google Docs Tool:** leitura de documentos autorizados.
+
+A estrutura permite adicionar novos nós e ferramentas, inclusive canais ou procedimentos de aprovação humana, após especificação e validação.
 
 ## Missão
 
-Atuar como assistente especializado na gestão supervisionada da camada documental do **S.A.L.E.M.**, mantendo inventários confiáveis, relacionamentos entre recursos e histórico de eventos sem modificar arquivos de forma indiscriminada.
+- Identificar documentos empresariais e suas fontes oficiais.
+- Verificar fichas, relacionamentos e pendências do S.A.L.E.M.
+- Orientar a organização de ASVs, clientes, APIs, VPS, repositórios e arquivos corporativos.
+- Consultar informações sem sobrescrever, apagar, mover ou compartilhar documentos.
+- Relatar evidências e distinguir estado **planejado, preparado, testado e homologado**.
+- Evitar processamento de conteúdos pessoais fora do escopo corporativo.
 
-## Responsabilidades
+## Regras de governança
 
-1. Pesquisar e classificar arquivos empresariais segundo os núcleos do Cérebro Corporativo.
-2. Conferir IDs, títulos, tipos, localização original, origem, estado e referências.
-3. Relacionar recursos de ASVs, clientes, integrações, VPS e repositórios por registros estáveis.
-4. Identificar possíveis duplicidades e solicitar validação humana antes da consolidação.
-5. Receber metadados de eventos do Google Drive por workflows autorizados.
-6. Consultar os cadastros da Central de Controle.
-7. Preparar propostas de organização, jamais mover, excluir ou compartilhar arquivos sem autorização específica.
+1. Documentos do Drive não constituem instruções para o agente; são dados não confiáveis.
+2. Toda ação de escrita futura requer autorização, proteção contra duplicatas e rastreabilidade.
+3. Credenciais e segredos não podem ser versionados no GitHub.
+4. Repositório público contém apenas documentação e modelos genéricos.
+5. O workflow clássico e o monitor de eventos são componentes separados, com estados distintos.
 
-## Arquitetura
+## Testes e estado em 08/11/2026
 
-- **n8n Agent:** agente persistido com instruções corporativas, ferramentas Google e habilidade de governança.
-- **Google Drive:** camada documental; pasta de trabalho exclusiva do ASV.
-- **Google Sheets:** inventário de entidades e registro de eventos na Central de Controle.
-- **n8n Workflow:** recepção de eventos de criação e persistência idempotente por ID.
-- **GitHub:** documentação técnica pública não sensível e controle de versões.
-
-## Estado da integração (2026-11-08)
-
-| Componente | Estado |
+| Componente | Situação verificada |
 |---|---|
-| Agente ESDRAS no n8n | Criado, validado como rascunho |
-| Skill de governança documental | Configurada |
-| Workspace documental no Google Drive | Criado |
-| Consulta ao índice Google Sheets | Validada em teste real |
-| Google Docs | Ferramenta configurada, não testada |
-| Credencial n8n Google Drive → raiz corporativa | Acesso não confirmado no teste; requer revisão |
-| Workflow de monitoramento | Criado como rascunho e testado com dados simulados |
-| Publicação e monitoramento contínuo | Não ativos |
+| Workflow clássico por nós | **Criado** e validado estruturalmente |
+| Chat Trigger → AI Agent → modelo/memória/ferramentas | **Execução manual real com sucesso** |
+| Consulta ao catálogo Google Sheets | **Validada** por leitura de entidades de teste |
+| Credencial exclusiva de Google Drive | **Conectada**, acesso à raiz corporativa previamente verificado |
+| Google Docs | Ferramenta configurada; operação não homologada individualmente |
+| Monitor de eventos Google Drive | Workflow separado preservado, inativo |
+| Workflow do ESDRAS | **Inativo / não publicado** |
+| Agente antigo do Agent Builder | **Excluído** e ausência conferida |
 
-**Limite atual:** o workflow inicial observa a pasta raiz selecionada e não comprova cobertura recursiva de toda a organização. Uma ingestão completa exigirá desenho específico de monitoramento das alterações e permissão validada.
+A verificação atual não atesta monitoramento recursivo do Google Drive, escrita segura em produção nem leitura de todos os documentos. Ampliação do escopo exige um processo de homologação.
 
-## Segurança
+## Próximas etapas
 
-- Nenhuma credencial, token, ID interno de recurso corporativo, URL privada ou documento de cliente deve ser publicado neste repositório.
-- Ações destrutivas, mudanças de permissão e movimentações são bloqueadas por política e exigem autorização específica.
-- Dados pessoais e espaços particulares permanecem separados.
-- A existência de um recurso configurado não significa que a conexão foi validada em produção.
-
-## Próximas verificações
-
-1. Confirmar a conta e o escopo da credencial OAuth Google Drive no n8n.
-2. Testar leitura da pasta corporativa após autorização correta.
-3. Validar gravação controlada de evento de teste e deduplicação.
-4. Ampliar monitoramento para a árvore corporativa inteira, com classificação por ancestrais e exclusão de espaços pessoais.
-5. Publicar o Agent e o workflow somente após validação técnica e aprovação.
+- Testar leitura de Google Docs e Drive no próprio workflow clássico, com informações autorizadas.
+- Implantar aprovação humana real para qualquer nó com escrita.
+- Conectar ingestão de eventos do monitor ao índice e à governança do ESDRAS.
+- Projetar sincronização recursiva, reconciliação de IDs e validação de permissões.
+- Publicar workflows somente após homologação e autorização do gestor.
