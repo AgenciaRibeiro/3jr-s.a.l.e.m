@@ -1,0 +1,12 @@
+{
+  "id": "CON-0001",
+  "provedor": "Provedor Exemplo",
+  "tipo": "API",
+  "ambiente": "teste",
+  "estado": "PLANEJADO",
+  "cofre_referencia": null,
+  "consumidores": [],
+  "permissoes_necessarias": [],
+  "custo_previsto": null,
+  "verificado_em": null
+}
