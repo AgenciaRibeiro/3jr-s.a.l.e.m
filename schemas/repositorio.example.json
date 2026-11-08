@@ -1,0 +1,11 @@
+{
+  "id": "REPO-0001",
+  "url_canonica": "https://github.com/exemplo/repositorio",
+  "categoria": "LABORATORIO",
+  "proprietario": "A definir",
+  "licenca": "A verificar",
+  "estado": "EM_AVALIACAO",
+  "projetos": [],
+  "ambiente_deploy_ref": null,
+  "ultima_validacao": null
+}
