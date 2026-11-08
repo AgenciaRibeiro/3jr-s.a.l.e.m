@@ -1,0 +1,12 @@
+{
+  "id": "VPS-0001",
+  "provedor": "A definir",
+  "proprietario": "A definir",
+  "ambiente": "teste",
+  "estado": "NAO_VERIFICADO",
+  "servicos": [],
+  "dominios": [],
+  "backup_ref": null,
+  "monitoramento_ref": null,
+  "verificado_em": null
+}
