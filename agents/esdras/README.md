@@ -74,3 +74,20 @@ O workflow clássico do ESDRAS foi ampliado com um canal **Telegram por nós**, 
 **Bloqueio para ativação:** não foi encontrada credencial específica de Telegram do ESDRAS no n8n MinhaEmpresa. O n8n atribuiu automaticamente uma credencial chamada `Telegram - JoJoZinha`, que pertence a outro contexto. Por segurança, **Telegram Trigger e Telegram Enviar resposta estão desativados**, e o workflow continua inativo. Antes de habilitar, associar aos dois nós uma credencial Telegram de ESDRAS efetivamente registrada nessa instância, confirmar usuário ou chat autorizado (allowlist), e validar ida e volta com a conta proprietária.
 
 **Segurança:** não colocar token do Telegram no repositório; nunca publicar o workflow com credencial de outro bot ou sem restrição de acesso. Não habilitar modificações, exclusões ou compartilhamento de arquivos sem aprovação e trilha de auditoria.
+
+
+## Canal Telegram com voz e agrupamento de mensagens
+
+**Atualização:** 08/11/2026. O ESDRAS permanece implementado no **editor clássico do n8n**.
+
+- Entrada: mensagens de texto, mensagens de voz e arquivos de áudio pelo Telegram em chat privado autorizado.
+- Autorização: acesso limitado a um Chat ID aprovado; não publicar IDs particulares, tokens ou segredos no repositório.
+- Voz recebida: download via nó Telegram e transcrição para português usando nó OpenAI.
+- Agrupamento: Data Table nativa do n8n, com ID por mensagem e buffer separado por conversa; cada execução espera 10 segundos antes de conferir se é a última da sequência. Fragmentos vizinhos são consolidados em uma solicitação.
+- Resposta: envio de texto pelo Telegram e, para solicitações contendo áudio, síntese de voz OpenAI e envio adicional de arquivo MP3.
+- Retenção: limpeza dos fragmentos atendidos após envio de texto; se ocorrer falha no processamento, a recuperação e a expiração de eventos pendentes deverão ser auditadas.
+- Segurança: o ESDRAS permanece sem ferramentas para mover, apagar, compartilhar ou alterar documentos do Drive.
+
+**Testes:** chat textual, agrupamento de dois fragmentos e caminho de áudio com eventos simulados; publicação e estado ativo confirmados. **A transcrição e o envio de áudio reais ainda exigem uma mensagem de voz do operador para homologação de ponta a ponta.**
+
+**Atenção:** APIs de transcrição e síntese de voz podem gerar custos por utilização. A versão publicada deve ser monitorada quanto a erros e consumo.
