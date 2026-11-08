@@ -58,3 +58,19 @@ A verificação atual não atesta monitoramento recursivo do Google Drive, escri
 - Conectar ingestão de eventos do monitor ao índice e à governança do ESDRAS.
 - Projetar sincronização recursiva, reconciliação de IDs e validação de permissões.
 - Publicar workflows somente após homologação e autorização do gestor.
+
+## Canal Telegram — preparação técnica (08/11/2026)
+
+O workflow clássico do ESDRAS foi ampliado com um canal **Telegram por nós**, isolado do chat interno:
+- Telegram Trigger (mensagens)
+- Code: apenas mensagens de texto em chats privados; converte em `chatInput` e `sessionId`
+- AI Agent próprio para Telegram com memória de sessão
+- OpenAI Chat Model e ferramentas Google Drive / Sheets / Docs de leitura
+- Telegram: enviar resposta ao mesmo chat
+- Dois grupos visuais no editor, separando chat interno e canal Telegram.
+
+**Estado atual:** 18 nós; a edição estrutural foi validada. O chat interno foi reexecutado com sucesso. **A conversa real via Telegram não foi homologada.**
+
+**Bloqueio para ativação:** não foi encontrada credencial específica de Telegram do ESDRAS no n8n MinhaEmpresa. O n8n atribuiu automaticamente uma credencial chamada `Telegram - JoJoZinha`, que pertence a outro contexto. Por segurança, **Telegram Trigger e Telegram Enviar resposta estão desativados**, e o workflow continua inativo. Antes de habilitar, associar aos dois nós uma credencial Telegram de ESDRAS efetivamente registrada nessa instância, confirmar usuário ou chat autorizado (allowlist), e validar ida e volta com a conta proprietária.
+
+**Segurança:** não colocar token do Telegram no repositório; nunca publicar o workflow com credencial de outro bot ou sem restrição de acesso. Não habilitar modificações, exclusões ou compartilhamento de arquivos sem aprovação e trilha de auditoria.
