@@ -1,0 +1,11 @@
+{
+  "id": "CLI-0001",
+  "nome_fantasia": "Cliente Exemplo",
+  "responsavel_interno": "A definir",
+  "estado": "PROSPECT",
+  "workspace_ref": null,
+  "projetos": [],
+  "asvs": [],
+  "infraestrutura": [],
+  "documentos_restritos_ref": null
+}
