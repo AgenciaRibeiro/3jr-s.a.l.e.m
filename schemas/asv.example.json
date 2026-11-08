@@ -1,0 +1,17 @@
+{
+  "id": "ASV-0001",
+  "nome": "Assistente Exemplo",
+  "funcao": "Descrever a finalidade",
+  "plataforma": "A confirmar",
+  "estado": "PLANEJADO",
+  "responsavel": "A definir",
+  "workspace_ref": null,
+  "repositorios": [],
+  "conexoes": [],
+  "workflows": [],
+  "aplicacoes": [],
+  "documentacao": [],
+  "memoria_ref": null,
+  "evidencias": [],
+  "verificado_em": null
+}
