@@ -76,18 +76,28 @@ O workflow clássico do ESDRAS foi ampliado com um canal **Telegram por nós**, 
 **Segurança:** não colocar token do Telegram no repositório; nunca publicar o workflow com credencial de outro bot ou sem restrição de acesso. Não habilitar modificações, exclusões ou compartilhamento de arquivos sem aprovação e trilha de auditoria.
 
 
-## Canal Telegram com voz e agrupamento de mensagens
+## Telegram: transcrição, agrupamento e resposta adaptativa
 
-**Atualização:** 08/11/2026. O ESDRAS permanece implementado no **editor clássico do n8n**.
+**Atualização:** 08/11/2026. Workflow clássico do n8n — modo de resposta controlado explicitamente pelo operador.
 
-- Entrada: mensagens de texto, mensagens de voz e arquivos de áudio pelo Telegram em chat privado autorizado.
-- Autorização: acesso limitado a um Chat ID aprovado; não publicar IDs particulares, tokens ou segredos no repositório.
-- Voz recebida: download via nó Telegram e transcrição para português usando nó OpenAI.
-- Agrupamento: Data Table nativa do n8n, com ID por mensagem e buffer separado por conversa; cada execução espera 10 segundos antes de conferir se é a última da sequência. Fragmentos vizinhos são consolidados em uma solicitação.
-- Resposta: envio de texto pelo Telegram e, para solicitações contendo áudio, síntese de voz OpenAI e envio adicional de arquivo MP3.
-- Retenção: limpeza dos fragmentos atendidos após envio de texto; se ocorrer falha no processamento, a recuperação e a expiração de eventos pendentes deverão ser auditadas.
-- Segurança: o ESDRAS permanece sem ferramentas para mover, apagar, compartilhar ou alterar documentos do Drive.
+### Regras de comunicação
 
-**Testes:** chat textual, agrupamento de dois fragmentos e caminho de áudio com eventos simulados; publicação e estado ativo confirmados. **A transcrição e o envio de áudio reais ainda exigem uma mensagem de voz do operador para homologação de ponta a ponta.**
+- **Padrão: TEXTO**, independentemente de a entrada ser um texto ou uma gravação de voz.
+- **Ativar modo de voz:** comandos como "Esdras, responda só por áudio", "modo voz" e "a partir de agora responda por áudio".
+- **Retornar ao texto:** "Esdras, volta a responder só por texto", "modo texto".
+- O modo escolhido fica registrado por conversa, em uma Data Table exclusiva do n8n, até novo comando.
+- **Exclusividade:** em modo texto, o Telegram recebe apenas texto; em modo voz, recebe somente um arquivo de áudio MP3, sem resposta textual duplicada.
+- Mensagem recebida em áudio é transcrita com OpenAI e entra na mesma fila de fragmentos que mensagens de texto; **receber áudio não troca automaticamente o modo**.
+- O agrupamento das mensagens usa buffer por chat e aguarda um intervalo de aproximadamente 10 segundos antes de responder.
+- As mensagens processadas são removidas do buffer. Recuperação e expiração de fragmentos pendentes continuam sujeitas a auditoria operacional.
+- A autorização de chats privados deve ser feita por identificadores verificados, mantidos exclusivamente nas configurações internas. Não publicar IDs particulares, tokens ou credenciais neste repositório.
 
-**Atenção:** APIs de transcrição e síntese de voz podem gerar custos por utilização. A versão publicada deve ser monitorada quanto a erros e consumo.
+### Estado de validação
+
+- Roteamento do modo padrão texto: **testado**.
+- Troca de texto → voz, persistência em outra solicitação e retorno voz → texto: **testados** com eventos simulados.
+- Solicitação recebida em áudio, transcrita em simulação, gerando **somente texto** com modo texto ativo: **testada**.
+- Publicação e versão ativa no n8n: **confirmadas**.
+- **Ainda pendente:** homologação ponta a ponta por mensagem real de voz no Telegram, incluindo áudio recebido, download, transcrição e retorno MP3.
+
+A execução continua limitada a consultas de documentos; operações destrutivas ou alteração de permissões permanecem indisponíveis. Transcrição e geração de voz podem implicar custos por uso.
