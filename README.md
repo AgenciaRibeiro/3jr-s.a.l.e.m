@@ -15,6 +15,10 @@
 
 **Para iniciar uma nova conversa, basta enviar o link do repositório e dizer:** "Acesse o repositório e vamos continuar". O assistente deve efetivamente abrir e ler os arquivos acima; o link sozinho não transfere o histórico nem concede acesso automático.
 
+## REGRA 002 — Verificação antes de enviar ao GitHub
+
+**Quando o gestor solicitar commit/push, a IDE deve executar automaticamente o [Protocolo de Pré-Push](docs/PROTOCOLO_PRE_PUSH.md)**: conferir branch, remoto, `.gitignore`, credenciais, segurança, testes, build, conflitos e CI. Se houver falhas críticas, o envio deve ser bloqueado. O gestor só precisa dizer **"Suba para o GitHub"**.
+
 ## Objetivo
 
 O S.A.L.E.M. é a arquitetura do **Cérebro Corporativo 3 J R**. Seu propósito é organizar os registros empresariais e conectar informações sobre assistentes virtuais (ASVs), clientes, integrações, infraestrutura e repositórios, sem duplicar as fontes oficiais de cada sistema.
