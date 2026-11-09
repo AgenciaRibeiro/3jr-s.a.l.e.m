@@ -45,3 +45,12 @@
 **Entrega:** `AGENTS.md` com a REGRA 001; `docs/CONTINUIDADE_DE_CONTEXTO.md`; `docs/ESTADO_ATUAL.md`; atualizações do README, roadmap e documentação do ESDRAS.  
 **Estado:** documentação de handoff versionada no repositório.  
 **Próximo passo:** nova conversa com link deve abrir esses arquivos, conferir fontes reais e continuar a missão pendente, sem pedir reconstrução do histórico.
+
+
+## 2026-11-08 — M007 — Regra 002 de pré-push seguro
+
+**Objetivo:** evitar que IDEs enviem códigos, documentos e configurações com falhas, segredos ou divergência de branch ao GitHub.  
+**Entrega:** `docs/PROTOCOLO_PRE_PUSH.md` e inclusão da REGRA 002 em `AGENTS.md`, README e governança.  
+**Escopo:** verificação de repositório e `main`, status/diff, conflitos, `.gitignore`, credenciais, segredos, dependências, lint, testes, compilação/build, CI, registro de commit e autorização.  
+**Estado:** política documental criada; hooks locais e checks de CI obrigatórios **não instalados** por esta missão.  
+**Próxima etapa:** aplicar a regra em outros projetos quando solicitado e configurar automações técnicas conforme a stack e permissões de cada repositório.
