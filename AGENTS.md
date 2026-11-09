@@ -65,3 +65,14 @@ Se **não houver acesso de escrita**, entregar instruções ou patches utilizáv
 Cada fonte deve ser consultada em seu próprio escopo. O GitHub **não contém todas as configurações nem substitui o acesso real** a elas.
 
 **Leia em seguida:** [Guia de retomada](docs/CONTINUIDADE_DE_CONTEXTO.md) → [Estado atual](docs/ESTADO_ATUAL.md) → [Registro de missões](docs/REGISTRO_DE_MISSOES.md).
+
+
+---
+
+## REGRA 002 — PRÉ-PUSH OBRIGATÓRIO
+
+**Toda solicitação para enviar alterações de uma IDE ao GitHub exige uma auditoria completa antes do commit/push**, conforme [Protocolo de Pré-Push](docs/PROTOCOLO_PRE_PUSH.md). A regra se aplica a pedidos simples como "suba para o GitHub", sem o gestor ter que lembrar comandos técnicos.
+
+A IDE deve confirmar repositório/origin e branch correta (inclusive main), sincronização e conflitos com o remoto, mudanças e diff, `.gitignore` e arquivos já rastreados, scanner de segredos e credenciais, histórico a ser enviado, dados sensíveis, dependências, análise estática, lint, typecheck, testes e build pertinentes à tecnologia, além da documentação de continuidade e dos checks do GitHub. **Bloquear push ao detectar segredos ou falhas críticas; corrigir, repetir verificações e só enviar com autorização.** Não tratar testes não executados como aprovados. Conferir SHA e resultado remoto depois do envio.
+
+Essa regra é operacional; proteção automática adicional exige hooks/CI e branch protection realmente instalados.
