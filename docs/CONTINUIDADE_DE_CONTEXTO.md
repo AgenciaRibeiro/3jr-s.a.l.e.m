@@ -58,18 +58,16 @@ Cada missão deve produzir uma *trilha de continuidade* com:
 
 **Padrão recomendado:** documentação curta e objetiva; não armazenar conversa bruta, segredos, dados particulares ou conteúdos corporativos restritos no GitHub público.
 
-## Texto reutilizável para iniciar uma nova conversa
+## Mensagem mínima para iniciar uma nova conversa
+
+**O gestor não precisa enviar comandos compridos.** A mensagem abaixo é suficiente para acionar a REGRA 001. Toda a leitura e a reconstrução do contexto são responsabilidade do assistente que conseguir acessar o repositório.
 
 ```text
-Acesse este repositório da 3 J R: https://github.com/AgenciaRibeiro/3jr-s.a.l.e.m
-
-Vamos dar continuidade ao projeto. Antes de fazer qualquer alteração,
-siga a REGRA 001 do arquivo AGENTS.md: leia o repositório, o estado atual,
-o histórico de missões, os componentes e as pendências. Confirme onde o
-projeto parou e prossiga a partir das decisões já registradas.
-Não recomece do zero e não faça deploy ou alterações operacionais
-não autorizadas.
+Acesse esse repositório e vamos continuar o projeto.
+https://github.com/AgenciaRibeiro/3jr-s.a.l.e.m
 ```
+
+Variações igualmente válidas: "Vamos continuar", "Retome o projeto" ou "Continue daqui" acompanhadas do link. O assistente deve, por iniciativa própria, ler `AGENTS.md`, o estado atual e o registro de missões, sem exigir que o gestor repita instruções.
 
 ## Fluxo quando o repositório estiver inacessível
 
