@@ -39,3 +39,8 @@ Estados especiais: `BLOQUEADO`, `ARQUIVADO`, `DESATIVADO`.
 ## Política de contribuições
 
 Revisar alterações via branch e pull request quando houver impacto técnico; verificar segredos antes de publicar; usar decisões de arquitetura (ADRs) para escolhas estruturais.
+
+
+## Verificação de segurança pré-push
+
+Antes de publicar qualquer alteração, obedecer à **REGRA 002**, definida em [PROTOCOLO_PRE_PUSH.md](PROTOCOLO_PRE_PUSH.md): inspeção de diff e histórico, `.gitignore`, credenciais, segredos, dados sensíveis, testes aplicáveis, branch e verificações após o push. Ocorrências de segredo real bloqueiam publicação e exigem proteção/rotação conforme o risco. Uma política textual não substitui hooks e verificações automatizadas de CI.
