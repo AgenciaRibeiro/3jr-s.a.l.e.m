@@ -4,11 +4,22 @@
 
 > Governança, conhecimento e rastreabilidade para uma agência digital orientada por automações e assistentes virtuais.
 
+## 🚨 Regra obrigatória para novas conversas
+
+**Antes de qualquer trabalho, leia `AGENTS.md` e siga a REGRA 001 — CONTINUIDADE OBRIGATÓRIA.** Leia o estado atual, o registro de missões, o plano de execução e os componentes relevantes. Não recomece do zero nem peça ao gestor para repetir informações já documentadas.
+
+- [Regra 001 — AGENTS.md](AGENTS.md)
+- [Protocolo de retomada](docs/CONTINUIDADE_DE_CONTEXTO.md)
+- [Estado atual e ponto de parada](docs/ESTADO_ATUAL.md)
+- [Registro cronológico de missões](docs/REGISTRO_DE_MISSOES.md)
+
+**Para iniciar uma nova conversa, basta enviar o link do repositório e dizer:** "Acesse o repositório e vamos continuar". O assistente deve efetivamente abrir e ler os arquivos acima; o link sozinho não transfere o histórico nem concede acesso automático.
+
 ## Objetivo
 
 O S.A.L.E.M. é a arquitetura do **Cérebro Corporativo 3 J R**. Seu propósito é organizar os registros empresariais e conectar informações sobre assistentes virtuais (ASVs), clientes, integrações, infraestrutura e repositórios, sem duplicar as fontes oficiais de cada sistema.
 
-**Status:** fundação documental inicial. Não é um aplicativo implantado, uma integração ativa ou um banco de dados operacional.
+**Status:** arquitetura e governança documentadas; componentes operacionais são mantidos em suas plataformas próprias. Consulte o [estado atual](docs/ESTADO_ATUAL.md) antes de presumir qualquer implantação.
 
 ## Núcleos
 
@@ -26,8 +37,9 @@ O S.A.L.E.M. é a arquitetura do **Cérebro Corporativo 3 J R**. Seu propósito 
 1. **Fonte única por domínio:** código no GitHub; documentação corporativa no Drive; workflows no n8n; bancos e serviços nas suas plataformas.
 2. **Relacionamento por identificadores e referências:** um recurso pode ser utilizado em vários sistemas sem ser copiado.
 3. **Segurança desde o início:** sem senhas, tokens, chaves, dados pessoais ou dados de clientes no repositório.
-4. **Governança por evidências:** distinguir planejado, preparado, implementado e homologado.
+4. **Governança por evidências:** distinguir planejado, preparado, implementado, testado e homologado.
 5. **Migração controlada:** não mover ou excluir documentos legados sem inventário, validação das dependências e autorização.
+6. **Continuidade obrigatória:** toda missão relevante atualiza estado, histórico, evidências e próxima ação.
 
 ## Documentação
 
@@ -37,10 +49,11 @@ O S.A.L.E.M. é a arquitetura do **Cérebro Corporativo 3 J R**. Seu propósito 
 - [Plano de execução](docs/PLANO_DE_EXECUCAO.md)
 - [Registro de decisão arquitetural](docs/decisoes/ADR-0001-FONTES_OFICIAIS.md)
 - [Schemas de referência](schemas/)
+- [Documentação do ESDRAS](agents/esdras/README.md)
 
-## Estado de implantação
+## Fontes oficiais e implantação
 
-A criação de pastas e planilhas no Google Drive pode existir independentemente deste repositório; **nenhuma conexão automática está implementada aqui**. Não presumir que servidores, APIs, fluxos ou aplicações estejam integrados só porque aparecem na documentação.
+GitHub mantém código, arquitetura e histórico. Google Drive mantém documentos corporativos sob permissões apropriadas. Sheets mantém índices. n8n mantém workflows e estado de execução. Cofres próprios guardam credenciais. **O conteúdo deste repositório não garante que serviços externos permaneçam ativos:** conferir as fontes oficiais na retomada.
 
 ---
 
